@@ -1,0 +1,37 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --watch",
+    "server": "nodemon dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.7",
+    "@types/pdf-parse": "^1.1.5",
+    "dotenv": "^17.0.0",
+    "eslint": "^9.30.0",
+    "express": "^5.1.0",
+    "install": "^0.13.0",
+    "nodemon": "^3.1.10",
+    "npm": "^11.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@chroma-core/default-embed": "^0.1.8",
+    "@chroma-core/openai": "^0.1.7",
+    "@langchain/core": "^0.3.62",
+    "@types/cors": "^2.8.19",
+    "chromadb": "^3.0.5",
+    "cors": "^2.8.5",
+    "langchain": "^0.3.29",
+    "openai": "^5.8.2",
+    "pdf-parse": "^1.1.1"
+  }
+}

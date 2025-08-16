@@ -1,0 +1,13 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "cd server && npm run build",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run server"
+  },
+  "author": "",
+  "license": "ISC"
+}
