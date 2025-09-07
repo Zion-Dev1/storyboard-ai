@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import client from '../services/openai';
+import client from "../config/openai";
 
 const storyGenController = async (
   req: Request,

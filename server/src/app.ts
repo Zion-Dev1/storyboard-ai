@@ -1,10 +1,10 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 
-import genRouter from "./routes/genRoutes";
-
+import dotenv from "dotenv";
 dotenv.config();
+
+import genRouter from "./routes/genRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
