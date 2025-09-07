@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import templateRouter from "./routes/templateRoutes";
+import imageRouter from "./routes/imageRoutes";
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(
   })
 );
 
-app.use("/route", templateRouter);
+app.use("/image", imageRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

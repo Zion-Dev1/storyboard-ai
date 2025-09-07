@@ -19,7 +19,7 @@ const imageGenController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         const userInput = req.body.userInput;
         const response = yield openai.responses.create({
             model: "gpt-5",
-            input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+            input: userInput,
             tools: [{ type: "image_generation" }],
         });
         return res.status(200).json({

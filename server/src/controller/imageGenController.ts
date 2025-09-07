@@ -12,8 +12,7 @@ const imageGenController = async (
 
     const response = await openai.responses.create({
       model: "gpt-5",
-      input:
-        "Generate an image of gray tabby cat hugging an otter with an orange scarf",
+      input: userInput,
       tools: [{ type: "image_generation" }],
     });
 
