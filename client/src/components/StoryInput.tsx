@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { LuWandSparkles, LuSend } from "react-icons/lu";
+import { TextField, IconButton, Button } from "@mui/material";
+import { Send, AutoFixHigh } from "@mui/icons-material"; // AutoFixHigh = wand sparkles
 
 const StoryInput: React.FC = () => {
   const [story, setStory] = useState("");
@@ -12,26 +13,26 @@ const StoryInput: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="text"
-          placeholder="Type in your story..."
-          value={story}
-          onChange={(e) => setStory(e.target.value)}
-        />
-        
-        <button type="button" onClick={() => console.log("Generate clicked")}>
-          Generate
-          <LuWandSparkles />
-        </button>
+    <div>
+      <TextField
+        fullWidth
+        placeholder="Type in your story..."
+        value={story}
+        onChange={(e) => setStory(e.target.value)}
+      ></TextField>
 
-        <button type="submit">
-          Send
-          <LuSend />
-        </button>
-      </div>
-    </form>
+      <Button
+        variant="text"
+        onClick={() => console.log("Generate clicked")}
+        startIcon={<AutoFixHigh />}
+      >
+        Generate
+      </Button>
+      
+      <IconButton type="submit" onClick={handleSubmit}>
+        <Send />
+      </IconButton>
+    </div>
   );
 };
 
