@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField, IconButton, Button } from "@mui/material";
-import { Send, AutoFixHigh } from "@mui/icons-material"; // AutoFixHigh = wand sparkles
+import { Send, AutoFixHigh } from "@mui/icons-material";
 
 const StoryInput: React.FC = () => {
   const [story, setStory] = useState("");
@@ -28,7 +28,7 @@ const StoryInput: React.FC = () => {
       >
         Generate
       </Button>
-      
+
       <IconButton type="submit" onClick={handleSubmit}>
         <Send />
       </IconButton>
