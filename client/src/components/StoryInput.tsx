@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { LuWandSparkles, LuSend } from "react-icons/lu";
 
 const StoryInput: React.FC = () => {
   const [story, setStory] = useState("");
@@ -6,7 +7,7 @@ const StoryInput: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!story.trim()) return;
-    console.log("Submitted story:", story);
+
     setStory("");
   };
 
@@ -19,13 +20,15 @@ const StoryInput: React.FC = () => {
           value={story}
           onChange={(e) => setStory(e.target.value)}
         />
+        
         <button type="button" onClick={() => console.log("Generate clicked")}>
-          {/* Replace with your Generate icon */}
           Generate
+          <LuWandSparkles />
         </button>
+
         <button type="submit">
-          {/* Replace with your Send icon */}
           Send
+          <LuSend />
         </button>
       </div>
     </form>
