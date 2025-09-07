@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import client from '../services/openai';
 
-const imageGenController = async (
+const storyGenController = async (
   req: Request,
   res: Response
 ): Promise<any> => {
@@ -23,4 +23,4 @@ const imageGenController = async (
   }
 };
 
-export default imageGenController;
+export default storyGenController;

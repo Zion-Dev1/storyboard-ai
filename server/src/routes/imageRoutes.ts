@@ -1,5 +1,5 @@
 import express from "express";
-import imageGenController from "../controller/imageGenController";
+import imageGenController from "../controller/storyGenController";
 
 const router = express.Router();
 

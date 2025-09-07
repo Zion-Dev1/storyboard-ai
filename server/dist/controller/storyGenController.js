@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const openai_1 = __importDefault(require("../services/openai"));
-const imageGenController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const storyGenController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userInput = req.body.userInput;
         const response = yield openai_1.default.responses.create({
@@ -30,4 +30,4 @@ const imageGenController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         return res.status(500).json({ err: err.message });
     }
 });
-exports.default = imageGenController;
+exports.default = storyGenController;
