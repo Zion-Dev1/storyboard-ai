@@ -11,11 +11,10 @@ const storyGenController = async (
     const response = await client.responses.create({
       model: "gpt-5",
       input: userInput,
-      tools: [{ type: "image_generation" }],
     });
 
     return res.status(200).json({
-      msg: "Image generated successfully.",
+      msg: "Text generated successfully.",
       results: response,
     });
   } catch (err) {

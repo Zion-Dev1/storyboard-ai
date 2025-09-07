@@ -19,10 +19,9 @@ const storyGenController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         const response = yield openai_1.default.responses.create({
             model: "gpt-5",
             input: userInput,
-            tools: [{ type: "image_generation" }],
         });
         return res.status(200).json({
-            msg: "Image generated successfully.",
+            msg: "Text generated successfully.",
             results: response,
         });
     }
