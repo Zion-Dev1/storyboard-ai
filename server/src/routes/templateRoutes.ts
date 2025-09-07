@@ -1,5 +1,5 @@
 import express from "express";
-import templateController from "../controller/templateController";
+import templateController from "../controller/imageGenController";
 
 const router = express.Router();
 
