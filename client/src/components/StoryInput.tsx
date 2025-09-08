@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, IconButton, Button } from "@mui/material";
 import { Send, AutoFixHigh } from "@mui/icons-material";
+import generateStory from "../services/generateStoryApi";
 
 const StoryInput: React.FC = () => {
   const [story, setStory] = useState("");
@@ -23,7 +24,9 @@ const StoryInput: React.FC = () => {
 
       <Button
         variant="text"
-        onClick={() => console.log("Generate clicked")}
+        onClick={async () => {
+          console.log(await generateStory());
+        }}
         startIcon={<AutoFixHigh />}
       >
         Generate

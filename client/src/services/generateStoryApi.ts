@@ -1,10 +1,9 @@
 import getHeaders from "../utils/getHeaders";
 
-const generateStory = async (prompt: string) => {
-  const response = await fetch(`http://localhost:3000/api/generate-story`, {
-    method: "POST",
+const generateStory = async () => {
+  const response = await fetch(`http://localhost:3000/generate/story`, {
+    method: "GET",
     headers: getHeaders(),
-    body: JSON.stringify({ prompt }),
   });
 
   if (!response.ok) {
