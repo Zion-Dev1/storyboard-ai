@@ -3,16 +3,19 @@ import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
 import { Send, AutoFixHigh } from "@mui/icons-material";
 import generateStoryApi from "../services/generateStoryApi";
 import useStoryInputStore from "../store/storyInputStore";
+import { useNavigate } from "react-router-dom";
 
-const StoryInput: React.FC = () => {
+const StoryInput = () => {
   const { story, setStory, isGenerating, setIsGenerating } =
     useStoryInputStore();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!story.trim()) return;
 
-    setStory("");
+    navigate("/board");
   };
 
   const generateStory = async () => {
