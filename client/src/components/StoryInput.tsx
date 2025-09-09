@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
 import { Send, AutoFixHigh } from "@mui/icons-material";
-import generateStory from "../services/generateStoryApi";
+import generateStoryApi from "../services/generateStoryApi";
 import useStoryInputStore from "../store/storyInputStore";
 
 const StoryInput: React.FC = () => {
@@ -15,6 +15,19 @@ const StoryInput: React.FC = () => {
     setStory("");
   };
 
+  const generateStory = async () => {
+    try {
+      setIsGenerating(true);
+      const result = await generateStoryApi();
+      const storyList = result.results;
+      setStory(storyList.join("\n"));
+    } catch (err) {
+      console.error("Error generating story:", err);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <div>
       <TextField
@@ -26,19 +39,8 @@ const StoryInput: React.FC = () => {
       ></TextField>
 
       <Button
-        variant="text"
-        onClick={async () => {
-          try {
-            setIsGenerating(true);
-            const result = await generateStory();
-            const storyList = result.results;
-            setStory(storyList.join("\n"));
-          } catch (err) {
-            console.error("Error generating story:", err);
-          } finally {
-            setIsGenerating(false);
-          }
-        }}
+        variant="contained"
+        onClick={generateStory}
         startIcon={isGenerating ? <CircularProgress /> : <AutoFixHigh />}
       >
         Generate
