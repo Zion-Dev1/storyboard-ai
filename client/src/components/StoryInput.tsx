@@ -27,17 +27,17 @@ const StoryInput: React.FC = () => {
 
       <Button
         variant="text"
-        onClick={() => {
-          setIsGenerating(true);
-          generateStory()
-            .then((result) => {
-              const storyList = result.results;
-              setStory(storyList.join("\n"));
-              setIsGenerating(false);
-            })
-            .catch((err) => {
-              console.error("Error generating story:", err);
-            });
+        onClick={async () => {
+          try {
+            setIsGenerating(true);
+            const result = await generateStory();
+            const storyList = result.results;
+            setStory(storyList.join("\n"));
+          } catch (err) {
+            console.error("Error generating story:", err);
+          } finally {
+            setIsGenerating(false);
+          }
         }}
         startIcon={isGenerating ? <CircularProgress /> : <AutoFixHigh />}
       >
