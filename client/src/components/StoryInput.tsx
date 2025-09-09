@@ -20,12 +20,15 @@ const StoryInput: React.FC = () => {
         placeholder="Type in your story..."
         value={story}
         onChange={(e) => setStory(e.target.value)}
+        multiline
       ></TextField>
 
       <Button
         variant="text"
         onClick={async () => {
-          console.log(await generateStory());
+          const result = await generateStory()
+          const storyList = result.results
+          setStory(storyList.join("\n"))
         }}
         startIcon={<AutoFixHigh />}
       >
