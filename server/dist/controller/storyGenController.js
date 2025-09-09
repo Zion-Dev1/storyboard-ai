@@ -14,13 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const openai_1 = __importDefault(require("../config/openai"));
 const storyGenController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
         const response = yield openai_1.default.responses.create({
             model: "gpt-4o",
             input: [
                 {
                     role: "system",
-                    content: `You are a cinematic storyteller. Write short, original stories in a storyboard format. Each sentence must describe a clear visual scene that could be illustrated. Keep the story around 6–10 sentences. Avoid abstract descriptions — focus on characters, places, and actions.`,
+                    content: `You are a cinematic storyteller. Write short, original stories in a storyboard format. Each sentence must describe a clear visual scene that could be illustrated. Keep the story around 6–10 sentences. Avoid abstract descriptions — focus on characters, places, and actions. Do not give a title and do not number the sentences. Don't give any styling or new lines in markdown. Just return the raw text.`,
                 },
                 {
                     role: "user",
@@ -29,9 +30,10 @@ const storyGenController = (req, res) => __awaiter(void 0, void 0, void 0, funct
             ],
         });
         const story = response.output_text;
+        const split = ((_a = story.match(/[^.!?]+[.!?]/g)) === null || _a === void 0 ? void 0 : _a.map(s => s.trim())) || [];
         return res.status(200).json({
             msg: "Text generated successfully.",
-            results: story,
+            results: split,
         });
     }
     catch (err) {
