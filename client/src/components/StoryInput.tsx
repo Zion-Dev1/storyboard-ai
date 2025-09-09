@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { TextField, IconButton, Button } from "@mui/material";
+import React from "react";
+import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
 import { Send, AutoFixHigh } from "@mui/icons-material";
 import generateStory from "../services/generateStoryApi";
+import useStoryInputStore from "../store/storyInputStore";
 
 const StoryInput: React.FC = () => {
-  const [story, setStory] = useState("");
+  const { story, setStory, isGenerating, setIsGenerating } =
+    useStoryInputStore();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,12 +27,19 @@ const StoryInput: React.FC = () => {
 
       <Button
         variant="text"
-        onClick={async () => {
-          const result = await generateStory()
-          const storyList = result.results
-          setStory(storyList.join("\n"))
+        onClick={() => {
+          setIsGenerating(true);
+          generateStory()
+            .then((result) => {
+              const storyList = result.results;
+              setStory(storyList.join("\n"));
+              setIsGenerating(false);
+            })
+            .catch((err) => {
+              console.error("Error generating story:", err);
+            });
         }}
-        startIcon={<AutoFixHigh />}
+        startIcon={isGenerating ? <CircularProgress /> : <AutoFixHigh />}
       >
         Generate
       </Button>

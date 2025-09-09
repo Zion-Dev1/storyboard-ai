@@ -7,7 +7,7 @@ type StoryInputStore = {
   setIsGenerating: (newIsGenerating: boolean) => void;
 };
 
-const useStoryInputStore = create<StoryInputStore>()((set) => ({
+const useStoryInputStore = create<StoryInputStore>((set) => ({
   story: "",
   setStory: (newStory) => set(() => ({ story: newStory })),
 
