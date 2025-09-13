@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
 import { Send, AutoAwesome } from "@mui/icons-material";
+
 import generateStoryApi from "../services/generateStoryApi";
 import useStoryStore from "../store/storyStore";
-import { useNavigate } from "react-router-dom";
 import useStoryInputStore from "../store/storyInputStore";
 
 const StoryInput = () => {
@@ -29,7 +31,6 @@ const StoryInput = () => {
       // story is list so cant directly set it to input
       setStory(storyList);
       setStoryInInput(storyList.join(" "));
-
     } catch (err) {
       console.error("Error generating story:", err);
     } finally {

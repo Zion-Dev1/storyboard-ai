@@ -11,6 +11,7 @@ type StoryInputStore = {
 const useStoryInputStore = create<StoryInputStore>((set) => ({
   storyInInput: "",
   setStoryInInput: (newStory) => set(() => ({ storyInInput: newStory })),
+
   isGenerating: false,
   setIsGenerating: (newIsGenerating) =>
     set(() => ({ isGenerating: newIsGenerating })),
