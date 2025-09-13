@@ -1,7 +1,7 @@
 import getHeaders from "../utils/getHeaders";
 
 const generateImages = async () => {
-  const response = await fetch(`http://localhost:3000/generate/image`, {
+  const response = await fetch(`http://localhost:3000/generate/images`, {
     method: "GET",
     headers: getHeaders(),
   });
