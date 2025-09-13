@@ -13,7 +13,7 @@ const StoryInput = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!story.trim()) return;
+    if (!story) return;
 
     navigate("/board");
   };
@@ -23,7 +23,7 @@ const StoryInput = () => {
       setIsGenerating(true);
       const result = await generateStoryApi();
       const storyList = result.results;
-      setStory(storyList.join("\n"));
+      setStory(storyList);
     } catch (err) {
       console.error("Error generating story:", err);
     } finally {
@@ -37,7 +37,7 @@ const StoryInput = () => {
         fullWidth
         placeholder="Type in your story..."
         value={story}
-        onChange={(e) => setStory(e.target.value)}
+        // onChange={(e) => setStory(e.target.value)}
         multiline
       ></TextField>
 

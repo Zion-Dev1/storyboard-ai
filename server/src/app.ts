@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 
 import dotenv from "dotenv";
+dotenv.config();
+
 import storyGenController from "./controller/storyGenController";
 import imageModelKeyController from "./controller/imageModelKeyController";
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,8 +18,7 @@ app.use(
   })
 );
 
-
-// app.get("/genstory", storyGenController);
+app.get("/genstory", storyGenController);
 app.get("/imagemodelkey", imageModelKeyController);
 
 app.listen(PORT, () => {
