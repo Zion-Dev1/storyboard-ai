@@ -4,7 +4,7 @@ import storyGenController from "../controller/storyGenController";
 
 const router = express.Router();
 
-router.get("/image", imageGenController);
+router.get("/images", imageGenController);
 router.get("/story", storyGenController);
 
 export default router;

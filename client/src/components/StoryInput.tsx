@@ -1,6 +1,6 @@
 import React from "react";
 import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
-import { Send, AutoFixHigh } from "@mui/icons-material";
+import { Send, AutoAwesome } from "@mui/icons-material";
 import generateStoryApi from "../services/generateStoryApi";
 import useStoryInputStore from "../store/storyInputStore";
 import { useNavigate } from "react-router-dom";
@@ -44,7 +44,7 @@ const StoryInput = () => {
       <Button
         variant="contained"
         onClick={generateStory}
-        startIcon={isGenerating ? <CircularProgress /> : <AutoFixHigh />}
+        startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
       >
         Generate
       </Button>
