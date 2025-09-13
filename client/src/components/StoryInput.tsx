@@ -42,7 +42,7 @@ const StoryInput = () => {
       ></TextField>
 
       <Button
-        variant="contained"
+        
         onClick={generateStory}
         startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
       >
