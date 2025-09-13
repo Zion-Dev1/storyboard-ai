@@ -2,7 +2,7 @@ import getHeaders from "../utils/getHeaders";
 
 const endpointUrl = "https://modelslab.com/api/v7/images/text-to-image";
 
-async function generateImages(imageModelKey: string) {
+async function generateImages(story:string, imageModelKey: string) {
   try {
     const requestBody = {
       prompt:

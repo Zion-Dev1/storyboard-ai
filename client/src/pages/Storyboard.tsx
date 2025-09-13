@@ -6,7 +6,12 @@ const StoryboardScreen = () => {
   useEffect(() => {
     (async () => {
       const key = await retreiveImageModelKey();
-      console.log(await generateImages(key));
+      console.log(
+        await generateImages(
+          "The figure descends a winding path, their boots crunching on fallen leaves and loose stones",
+          key
+        )
+      );
     })();
   }, []);
 
