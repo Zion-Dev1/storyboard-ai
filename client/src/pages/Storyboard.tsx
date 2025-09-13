@@ -16,12 +16,17 @@ const StoryboardScreen = () => {
 
       const key = await retreiveImageModelKey();
 
-      for (const sentence of story) {
+      for (let i = 0; i < story.length; i++) {
         try {
-          const imageUrl = await generateImages(sentence, style, key);
+          const imageUrl = await generateImages(
+            story[i],
+            style,
+            key,
+            story[i - 1] ? story[i - 1] : undefined
+          );
           addImage(imageUrl);
         } catch (err) {
-          console.error("Error generating image for sentence:", sentence, err);
+          console.error("Error generating image for sentence:", story[i], err);
         }
       }
     })();
