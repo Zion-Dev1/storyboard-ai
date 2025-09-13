@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import generateImages from "../services/generateImagesApi";
 import retreiveImageModelKey from "../utils/retreiveImageModelKey";
-import useStoryInputStore from "../store/storyInputStore";
+import useStoryStore from "../store/storyStore";
 import useImagesStore from "../store/imagesStore";
 
 const StoryboardScreen = () => {
-  const { story } = useStoryInputStore();
+  const { story } = useStoryStore();
   const { images, addImage } = useImagesStore();
 
   useEffect(() => {
@@ -31,7 +31,13 @@ const StoryboardScreen = () => {
       <h1>Storyboard AI</h1>
       <p>Generating images…</p>
       {images.map((img, index) => (
-        <img key={index} src={img} alt={`Scene ${index + 1}`} />
+        <img
+          key={index}
+          src={img}
+          alt={`Scene ${index + 1}`}
+          width={512}
+          height={512}
+        />
       ))}
     </>
   );

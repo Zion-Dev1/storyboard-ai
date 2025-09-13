@@ -2,18 +2,20 @@ import React from "react";
 import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
 import { Send, AutoAwesome } from "@mui/icons-material";
 import generateStoryApi from "../services/generateStoryApi";
-import useStoryInputStore from "../store/storyInputStore";
+import useStoryStore from "../store/storyStore";
 import { useNavigate } from "react-router-dom";
+import useStoryInputStore from "../store/storyInputStore";
 
 const StoryInput = () => {
-  const { story, setStory, isGenerating, setIsGenerating } =
+  const { setStory } = useStoryStore();
+  const { storyInInput, setStoryInInput, isGenerating, setIsGenerating } =
     useStoryInputStore();
 
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!story) return;
+    if (!storyInInput) return;
 
     navigate("/board");
   };
@@ -23,7 +25,11 @@ const StoryInput = () => {
       setIsGenerating(true);
       const result = await generateStoryApi();
       const storyList = result.results;
+
+      // story is list so cant directly set it to input
       setStory(storyList);
+      setStoryInInput(storyList.join(" "));
+
     } catch (err) {
       console.error("Error generating story:", err);
     } finally {
@@ -36,13 +42,12 @@ const StoryInput = () => {
       <TextField
         fullWidth
         placeholder="Type in your story..."
-        value={story}
-        // onChange={(e) => setStory(e.target.value)}
+        value={storyInInput}
+        onChange={(e) => setStoryInInput(e.target.value)}
         multiline
       ></TextField>
 
       <Button
-        
         onClick={generateStory}
         startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
       >
