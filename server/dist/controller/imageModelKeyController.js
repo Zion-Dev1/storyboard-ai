@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const imageModelAuthController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.status(200).json({
-        msg: " generated successfully.",
+        msg: "Key sent successfully.",
         results: process.env.IMAGEN_MODEL_AUTH_KEY,
     });
 });

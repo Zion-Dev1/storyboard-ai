@@ -8,7 +8,6 @@ const StoryboardScreen = () => {
       const key = await retreiveImageModelKey();
       console.log(await generateImages(key));
     })();
-    console.log("Storyboard Screen Loaded");
   }, []);
 
   return (

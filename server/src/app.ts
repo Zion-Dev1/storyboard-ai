@@ -17,7 +17,8 @@ app.use(
   })
 );
 
-app.get("/genstory", storyGenController);
+
+// app.get("/genstory", storyGenController);
 app.get("/imagemodelkey", imageModelKeyController);
 
 app.listen(PORT, () => {
