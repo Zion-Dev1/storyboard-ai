@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import generateImages from "../services/generateImagesApi";
+import retreiveImageModelKey from "../utils/retreiveImageModelKey";
 
 const StoryboardScreen = () => {
   useEffect(() => {
     (async () => {
-      console.log(await generateImages());
+      const key = await retreiveImageModelKey();
+      console.log(await generateImages(key));
     })();
     console.log("Storyboard Screen Loaded");
   }, []);

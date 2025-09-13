@@ -1,7 +1,7 @@
 import getHeaders from "../utils/getHeaders";
 
 const generateStory = async () => {
-  const response = await fetch(`http://localhost:3000/generate/story`, {
+  const response = await fetch(`http://localhost:3000/genstory`, {
     method: "GET",
     headers: getHeaders(),
   });

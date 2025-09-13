@@ -8,24 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const openai_1 = __importDefault(require("../config/openai"));
+const genai_1 = require("@google/genai");
+const ai = new genai_1.GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 const imageGenController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userInput } = req.body;
-        const response = yield openai_1.default.images.generate({
-            model: "gpt-image-1",
-            prompt: "You are a cinematic illustrator. You will be given a short sentence. Generate a unique image that clearly visualizes the scene described. It should focus on the key characters, places, and actions mentioned in that sentence. Do not add text, captions, or numbers to the image. Use a consistent art style that matches the tone of the story. Ensure the image is detailed and visually engaging, suitable for a storyboard format. The sentence is: " +
-                userInput,
-            size: "512x512",
-            n: 1,
+        const response = yield ai.models.generateContent({
+            model: "gemini-2.5-flash-image-preview",
+            contents: 
         });
+        const endpointUrl = 'https://modelslab.com/api/v7/images/text-to-image';
+        const requestBody = {
+            "prompt": "You are a cinematic illustrator. You will be given a short sentence. Generate a unique image that clearly visualizes the scene described. It should focus on the key characters, places, and actions mentioned in that sentence. Do not add text, captions, or numbers to the image. Use a consistent art style that matches the tone of the story. Ensure the image is detailed and visually engaging, suitable for a storyboard format. The sentence is: " +
+                userInput,
+            "model_id": "imagen-4",
+            "aspect_ratio": "1:1",
+            "key": "X26poiDJ4bNAmMzpHEr5lJV1GWJ8gQYOytCghYJ27eIuZeY0WYZSrLJzfzHG"
+        };
         return res.status(200).json({
             msg: "Image generated successfully.",
-            results: response.data,
+            results: response,
         });
     }
     catch (err) {
