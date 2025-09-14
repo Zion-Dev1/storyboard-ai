@@ -1,12 +1,15 @@
 import { useEffect } from "react";
+import { CircularProgress } from "@mui/material";
+
 import generateImages from "../services/generateImagesApi";
 import retreiveImageModelKey from "../utils/retreiveImageModelKey";
+
 import useStoryStore from "../store/storyStore";
 import useImagesStore from "../store/imagesStore";
 
 const StoryboardScreen = () => {
   const { story, style } = useStoryStore();
-  const { images, addImage } = useImagesStore();
+  const { images, addImage, isGenerating, setIsGenerating } = useImagesStore();
 
   useEffect(() => {
     (async () => {
@@ -14,7 +17,8 @@ const StoryboardScreen = () => {
 
       const key = await retreiveImageModelKey();
 
-      story.forEach(async (sentence, i) => {
+      story.forEach(async (sentence) => {
+        setIsGenerating(true);
         const imageUrl = await generateImages(
           sentence,
           story.join(" "),
@@ -23,6 +27,7 @@ const StoryboardScreen = () => {
         );
 
         addImage(imageUrl);
+        setIsGenerating(false);
       });
     })();
   }, [story, addImage]);
@@ -30,7 +35,13 @@ const StoryboardScreen = () => {
   return (
     <div>
       <h1>Storyboard AI</h1>
-      <p>Generating images…</p>
+      {isGenerating && (
+        <div>
+          <CircularProgress />
+          Generating...
+        </div>
+      )}
+
       {images.map((img, index) => (
         <img
           key={index}
