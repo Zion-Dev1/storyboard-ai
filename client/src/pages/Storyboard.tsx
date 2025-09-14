@@ -3,12 +3,10 @@ import generateImages from "../services/generateImagesApi";
 import retreiveImageModelKey from "../utils/retreiveImageModelKey";
 import useStoryStore from "../store/storyStore";
 import useImagesStore from "../store/imagesStore";
-import useStoryInputStore from "../store/storyInputStore";
 
 const StoryboardScreen = () => {
-  const { story } = useStoryStore();
+  const { story, style } = useStoryStore();
   const { images, addImage } = useImagesStore();
-  const { style } = useStoryInputStore();
 
   useEffect(() => {
     (async () => {
@@ -16,19 +14,16 @@ const StoryboardScreen = () => {
 
       const key = await retreiveImageModelKey();
 
-      for (let i = 0; i < story.length; i++) {
-        try {
-          const imageUrl = await generateImages(
-            story[i],
-            style,
-            key,
-            story[i - 1] ? story[i - 1] : undefined
-          );
-          addImage(imageUrl);
-        } catch (err) {
-          console.error("Error generating image for sentence:", story[i], err);
-        }
-      }
+      story.forEach(async (sentence, i) => {
+        const imageUrl = await generateImages(
+          sentence,
+          story.join(" "),
+          style,
+          key
+        );
+
+        addImage(imageUrl);
+      });
     })();
   }, [story, addImage]);
 

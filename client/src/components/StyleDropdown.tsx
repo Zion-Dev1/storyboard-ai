@@ -1,9 +1,9 @@
 import { FormControl, Select, MenuItem } from "@mui/material";
 
-import useStoryInputStore from "../store/storyInputStore";
+import useStoryStore from "../store/storyStore";
 
 const StyleDropdown = () => {
-  const { style, setStyle } = useStoryInputStore();
+  const { style, setStyle } = useStoryStore();
   const storyboardStyles = [
     "Cinematic",
     "Anime",
