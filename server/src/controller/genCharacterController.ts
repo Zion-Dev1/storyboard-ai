@@ -12,7 +12,7 @@ const genCharacterController = async (
         {
           role: "user",
           content:
-            "Generate a visual, detailed description of a random character. Make the chracter unique and have something to do (like a wizard or a cook).",
+            "Generate a visual, detailed description of a random character. Make the chracter unique and have something to do (like a wizard or a cook or any profession). Keep it under 50 words. Focus on appearance, clothing, and accessories. Avoid abstract traits or personality descriptions. Everything you add to the description should be visually described to the max so that an AI bot can generate almost the same image given the description.",
         },
       ],
     });
