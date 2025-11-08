@@ -4,8 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
-import storyGenController from "./controller/storyGenController";
 import imageModelKeyController from "./controller/imageModelKeyController";
+import genRouter from "./routes/genRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,7 +18,7 @@ app.use(
   })
 );
 
-app.get("/genstory", storyGenController);
+app.use("/gen", genRouter);
 app.get("/imagemodelkey", imageModelKeyController);
 
 app.listen(PORT, () => {
