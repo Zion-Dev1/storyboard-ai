@@ -29,6 +29,7 @@ const StoryboardScreen = () => {
           style,
           key
         );
+        
         results.push(imageUrl);
       }
 

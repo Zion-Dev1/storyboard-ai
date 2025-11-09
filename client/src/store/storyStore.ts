@@ -8,6 +8,9 @@ type StoryStore = {
 
   style: string;
   setStyle: (newStyle: string) => void;
+
+  numOfSlides: string;
+  setNumOfSlides: (newNum: string) => void;
 };
 
 const useStoryStore = create<StoryStore>()(
@@ -17,9 +20,12 @@ const useStoryStore = create<StoryStore>()(
       setStory: (newStory) => set(() => ({ story: newStory })),
       addScene: (newScene) =>
         set((state) => ({ story: [...state.story, newScene] })),
-      
+
       style: "Realistic",
       setStyle: (newStyle) => set(() => ({ style: newStyle })),
+
+      numOfSlides: "5",
+      setNumOfSlides: (newNum) => set(() => ({ numOfSlides: newNum })),
     }),
     {
       name: "storyStore",

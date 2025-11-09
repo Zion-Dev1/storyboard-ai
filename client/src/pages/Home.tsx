@@ -1,6 +1,7 @@
 import StoryInput from "../components/StoryInput";
 import StyleDropdown from "../components/StyleDropdown";
 import GenerateStoryBtn from "../components/GenerateStoryBtn";
+import NumOfSlidesInput from "../components/NumOfSlidesInput";
 
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
@@ -30,6 +31,7 @@ const HomeScreen = () => {
         <Send />
       </IconButton>
       <StyleDropdown />
+      <NumOfSlidesInput />
     </>
   );
 };
