@@ -43,7 +43,7 @@ const GenerateStoryBtn = () => {
       }}
       startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
     >
-      Generate
+      Generate Story with AI
     </Button>
   );
 };
