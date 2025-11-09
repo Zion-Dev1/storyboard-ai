@@ -1,16 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TextField, IconButton, Button, CircularProgress } from "@mui/material";
-import { Send, AutoAwesome } from "@mui/icons-material";
+import { TextField, IconButton } from "@mui/material";
+import { Send } from "@mui/icons-material";
 
-import generateStoryApi from "../services/generateStoryApi";
-import useStoryStore from "../store/storyStore";
 import useStoryInputStore from "../store/storyInputStore";
+import GenerateStoryBtn from "./GenerateStoryBtn";
 
 const StoryInput = () => {
-  const { setStory } = useStoryStore();
-  const { storyInInput, setStoryInInput, isGenerating, setIsGenerating } =
+  const { storyInInput, setStoryInInput } =
     useStoryInputStore();
 
   const navigate = useNavigate();
@@ -20,22 +18,6 @@ const StoryInput = () => {
     if (!storyInInput) return;
 
     navigate("/board");
-  };
-
-  const generateStory = async () => {
-    try {
-      setIsGenerating(true);
-      const result = await generateStoryApi();
-      const storyList = result.results;
-
-      // story is list so cant directly set it to input
-      setStory(storyList);
-      setStoryInInput(storyList.join(" "));
-    } catch (err) {
-      console.error("Error generating story:", err);
-    } finally {
-      setIsGenerating(false);
-    }
   };
 
   return (
@@ -48,12 +30,7 @@ const StoryInput = () => {
         multiline
       ></TextField>
 
-      <Button
-        onClick={generateStory}
-        startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
-      >
-        Generate
-      </Button>
+      <GenerateStoryBtn/>
 
       <IconButton type="submit" onClick={handleSubmit}>
         <Send />

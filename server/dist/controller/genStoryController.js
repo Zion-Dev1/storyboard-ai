@@ -33,7 +33,7 @@ const genStoryController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         const split = ((_a = story.match(/[^.!?]+[.!?]/g)) === null || _a === void 0 ? void 0 : _a.map((s) => s.trim())) || [];
         return res.status(200).json({
             msg: "Text generated successfully.",
-            results: response,
+            results: split,
         });
     }
     catch (err) {

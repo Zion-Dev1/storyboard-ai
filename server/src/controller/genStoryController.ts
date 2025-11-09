@@ -19,13 +19,13 @@ const genStoryController = async (
         },
       ],
     });
-
+    
     const story = response.output_text;
     const split = story.match(/[^.!?]+[.!?]/g)?.map((s) => s.trim()) || [];
 
     return res.status(200).json({
       msg: "Text generated successfully.",
-      results: response,
+      results: split,
     });
   } catch (err) {
     return res.status(500).json({ err: (err as Error).message });
