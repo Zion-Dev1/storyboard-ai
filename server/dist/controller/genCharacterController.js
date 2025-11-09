@@ -20,7 +20,7 @@ const genCharacterController = (req, res) => __awaiter(void 0, void 0, void 0, f
             input: [
                 {
                     role: "system",
-                    content: "You are tasked with generating a detailed visual description of a chracter. This character will be given to an AI bot, so the description should be good enough that if given the same character description prompt, the AI bot will recreate the same image. ",
+                    content: "You are tasked with generating a detailed visual description of a chracter. This character will be given to an AI bot, so the description should be good enough that if given the same character description prompt, the AI bot will recreate the same image. Don't add any intro or title or any styling. Just return the raw text.",
                 },
                 {
                     role: "user",

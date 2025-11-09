@@ -6,31 +6,38 @@ import retreiveImageModelKey from "../utils/retreiveImageModelKey";
 
 import useStoryStore from "../store/storyStore";
 import useImagesStore from "../store/imagesStore";
+import useCharacterStore from "../store/characterStore";
 
 const StoryboardScreen = () => {
   const { story, style } = useStoryStore();
+  const { character } = useCharacterStore();
   const { images, addImage, isGenerating, setIsGenerating } = useImagesStore();
 
   useEffect(() => {
-    (async () => {
-      if (!story || story.length === 0 || images.length >= story.length) return;
+    if (!story || story.length === 0 || images.length >= story.length) return;
 
+    const run = async () => {
       const key = await retreiveImageModelKey();
+      setIsGenerating(true);
 
-      story.forEach(async (sentence) => {
-        setIsGenerating(true);
+      const results = [];
+      for (const sentence of story) {
         const imageUrl = await generateImages(
           sentence,
           story.join(" "),
+          character,
           style,
           key
         );
+        results.push(imageUrl);
+      }
 
-        addImage(imageUrl);
-        setIsGenerating(false);
-      });
-    })();
-  }, [story, addImage]);
+      results.forEach((img) => addImage(img));
+      setIsGenerating(false);
+    };
+
+    run();
+  }, [story, addImage, character, style]);
 
   return (
     <div>
@@ -43,13 +50,10 @@ const StoryboardScreen = () => {
       )}
 
       {images.map((img, index) => (
-        <img
-          key={index}
-          src={img}
-          alt={story[index]}
-          width={512}
-          height={512}
-        />
+        <div key={index}>
+          <p>{story[index]}</p>
+          <img src={img} alt={story[index]} width={512} height={512} />
+        </div>
       ))}
     </div>
   );
