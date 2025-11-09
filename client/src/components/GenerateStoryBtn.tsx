@@ -9,12 +9,12 @@ import useCharacterStore from "../store/characterStore";
 
 const GenerateStoryBtn = () => {
   const { setStory } = useStoryStore();
-  const { setCharacter } = useCharacterStore();
+  const { character, setCharacter } = useCharacterStore();
   const { setStoryInInput, isGenerating, setIsGenerating } =
     useStoryInputStore();
 
-  const generateStory = async () => {
-    const result = await generateStoryApi();
+  const generateStory = async (character: String) => {
+    const result = await generateStoryApi(character);
     const storyList = result.results;
 
     setStory(storyList);
@@ -33,8 +33,8 @@ const GenerateStoryBtn = () => {
       onClick={async () => {
         try {
           setIsGenerating(true);
-          await generateStory();
           await generateCharacter();
+          await generateStory(character);
         } catch (err) {
           console.error("Error generating content:", err);
         } finally {

@@ -5,6 +5,6 @@ import genStoryController from "../controller/genStoryController";
 const router = express.Router();
 
 router.get("/character", genCharacterController);
-router.get("/story", genStoryController);
+router.post("/story", genStoryController);
 
 export default router;

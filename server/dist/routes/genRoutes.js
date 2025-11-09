@@ -8,5 +8,5 @@ const genCharacterController_1 = __importDefault(require("../controller/genChara
 const genStoryController_1 = __importDefault(require("../controller/genStoryController"));
 const router = express_1.default.Router();
 router.get("/character", genCharacterController_1.default);
-router.get("/story", genStoryController_1.default);
+router.post("/story", genStoryController_1.default);
 exports.default = router;
