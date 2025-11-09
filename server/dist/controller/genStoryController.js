@@ -16,13 +16,13 @@ const openai_1 = __importDefault(require("../config/openai"));
 const genStoryController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const character = req.body.character;
+        const { character, numOfSlides } = req.body;
         const response = yield openai_1.default.responses.create({
             model: "gpt-4o",
             input: [
                 {
                     role: "system",
-                    content: "You are a cinematic storyteller. Write a short, original story and split it up in sentences in a storyboard format. Each sentence must describe a clear visual scene that could be illustrated. Keep the story around 5 sentences. Make the story about one central character, but do not mention the description of this character. Just use it to create the scenes that would be relevant to him/her. Avoid abstract descriptions — focus on the character, places, and actions. Do not give a title and do not number the sentences. Don't give any styling or new lines in markdown. Just return the raw text.",
+                    content: `You are a cinematic storyteller. Write a short, original story and split it up in sentences in a storyboard format. Each sentence must describe a clear visual scene that could be illustrated. Keep the story to ${numOfSlides} sentences. Make the story about one central character, but do not mention the description of this character. Just use it to create the scenes that would be relevant to him/her. Avoid abstract descriptions — focus on the character, places, and actions. Do not give a title and do not number the sentences. Don't give any styling or new lines in markdown. Just return the raw text.`,
                 },
                 {
                     role: "user",

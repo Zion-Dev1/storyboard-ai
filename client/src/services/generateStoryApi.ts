@@ -1,9 +1,9 @@
 import getHeaders from "../utils/getHeaders";
 
-const generateStory = async (character: String) => {
+const generateStory = async (character: String, numOfSlides: String) => {
   const response = await fetch(`http://localhost:3000/gen/story`, {
     method: "POST",
-    body: JSON.stringify({ character }),
+    body: JSON.stringify({ character, numOfSlides }),
     headers: getHeaders(),
   });
 

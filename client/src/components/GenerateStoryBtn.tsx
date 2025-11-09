@@ -9,13 +9,13 @@ import useStoryInputStore from "../store/storyInputStore";
 import useCharacterStore from "../store/characterStore";
 
 const GenerateStoryBtn = () => {
-  const { setStory } = useStoryStore();
+  const { numOfSlides, setStory } = useStoryStore();
   const { character, setCharacter } = useCharacterStore();
   const { setStoryInInput, isGenerating, setIsGenerating } =
     useStoryInputStore();
 
   const generateStory = async (character: String) => {
-    const result = await generateStoryApi(character);
+    const result = await generateStoryApi(character, numOfSlides);
     const storyList = result.results;
 
     setStory(storyList);
