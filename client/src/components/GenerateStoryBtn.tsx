@@ -10,7 +10,7 @@ import useCharacterStore from "../store/characterStore";
 
 const GenerateStoryBtn = () => {
   const { numOfSlides, setStory } = useStoryStore();
-  const { character, setCharacter } = useCharacterStore();
+  const { setCharacter } = useCharacterStore();
   const { setStoryInInput, isGenerating, setIsGenerating } =
     useStoryInputStore();
 

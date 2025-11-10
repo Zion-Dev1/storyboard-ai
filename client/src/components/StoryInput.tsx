@@ -9,7 +9,7 @@ const StoryInput = () => {
       <TextField
         fullWidth
         placeholder="Type in your story..."
-        value={storyInInput}
+        value={storyInInput.split(". ").join(".\n\n")}
         onChange={(e) => setStoryInInput(e.target.value)}
         multiline
       ></TextField>
