@@ -17,7 +17,7 @@ const GenerateStoryBtn = () => {
   const generateStory = async (character: String) => {
     const result = await generateStoryApi(character, numOfSlides);
     const storyList = result.results;
-
+    
     setStory(storyList);
     setStoryInInput(storyList.join(" "));
   };
@@ -27,6 +27,7 @@ const GenerateStoryBtn = () => {
     const character = result.results;
 
     setCharacter(character);
+    return character
   };
 
   return (
@@ -34,8 +35,9 @@ const GenerateStoryBtn = () => {
       onClick={async () => {
         try {
           setIsGenerating(true);
-          await generateCharacter();
-          await generateStory(character);
+          const char = await generateCharacter();
+          
+          await generateStory(char);
         } catch (err) {
           console.error("Error generating content:", err);
         } finally {
