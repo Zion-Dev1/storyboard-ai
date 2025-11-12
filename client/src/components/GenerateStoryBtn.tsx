@@ -36,7 +36,6 @@ const GenerateStoryBtn = () => {
         try {
           setIsGenerating(true);
           const char = await generateCharacter();
-
           await generateStory(char);
         } catch (err) {
           console.error("Error generating content:", err);
@@ -44,7 +43,21 @@ const GenerateStoryBtn = () => {
           setIsGenerating(false);
         }
       }}
-      startIcon={isGenerating ? <CircularProgress size="small"/> : <AutoAwesome />}
+      startIcon={
+        isGenerating ? (
+          <CircularProgress size={16} color="inherit" />
+        ) : (
+          <AutoAwesome />
+        )
+      }
+      sx={{
+        backgroundColor: "#e0e0e0",
+        color: "#333",
+        textTransform: "none",
+        "&:hover": {
+          backgroundColor: "#d5d5d5",
+        },
+      }}
     >
       Generate
     </Button>
