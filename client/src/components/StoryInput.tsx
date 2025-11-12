@@ -19,6 +19,14 @@ const StoryInput = () => {
             paddingBottom: "60px",
             paddingRight: "16px",
           },
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "12px",
+            borderWidth: "2px",
+            borderColor: "grey.400",
+            "&:hover fieldset": {
+              borderColor: "grey.600",
+            },
+          },
         }}
       />
 
@@ -30,7 +38,7 @@ const StoryInput = () => {
           display: "flex",
           alignItems: "center",
           gap: 1,
-          backgroundColor: "rgba(255,255,255)",
+          backgroundColor: "rgba(255,255,255,0.8)",
           borderRadius: 2,
           p: 0.5,
         }}

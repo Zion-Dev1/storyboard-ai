@@ -6,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 const HomeScreen = () => {
   return (
     <Box sx={{ maxWidth: 800, mx: "auto", mt: 6, textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h2" fontWeight="900">
         Storyboard AI
       </Typography>
       <Typography variant="subtitle1" sx={{ mb: 4 }}>
