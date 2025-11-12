@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import useStoryStore from "../store/storyStore";
 import useStoryInputStore from "../store/storyInputStore";
 
@@ -6,28 +6,34 @@ const NumOfSlidesInput = () => {
   const { numOfSlides, setNumOfSlides } = useStoryStore();
   const { isGenerating } = useStoryInputStore();
 
+  const handleNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    const num = Number(val);
+    if (val === "" || num >= 1) {
+      setNumOfSlides(val);
+    }
+  };
+
   return (
-    <div>
-      <h3>Number of slides to generate</h3>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "left",
+        width: 180,
+      }}
+    >
+      <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
+        Number of Slides
+      </Typography>
 
       <TextField
-        disabled={isGenerating}
-        onChange={(e) => {
-          const val = e.target.value;
-          const num = Number(val);
-          if (val === "" || num >= 1) {
-            setNumOfSlides(val);
-          }
-        }}
-        value={numOfSlides}
         type="number"
-        slotProps={{
-          inputLabel: {
-            shrink: true,
-          },
-        }}
+        value={numOfSlides}
+        onChange={handleNumChange}
+        disabled={isGenerating}
       />
-    </div>
+    </Box>
   );
 };
 

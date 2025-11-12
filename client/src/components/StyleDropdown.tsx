@@ -1,4 +1,4 @@
-import { FormControl, Select, MenuItem } from "@mui/material";
+import { FormControl, Select, MenuItem, Typography } from "@mui/material";
 
 import useStoryStore from "../store/storyStore";
 
@@ -18,22 +18,23 @@ const StyleDropdown = () => {
   ];
 
   return (
-    <div>
-      <h3>Choose a style</h3>
-      <FormControl>
-        <Select
-          value={style}
-          onChange={(e) => setStyle(e.target.value)}
-          defaultValue="Realistic"
-        >
-          {storyboardStyles.map((style) => (
-            <MenuItem key={style} value={style}>
-              {style}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl sx={{ minWidth: 180 }}>
+      <Typography variant="subtitle2" sx={{ mb: 0.5, textAlign: "left" }}>
+        Choose a style
+      </Typography>
+      <Select
+        value={style}
+        onChange={(e) => setStyle(e.target.value)}
+        defaultValue="Realistic"
+        sx={{ textAlign: "left" }}
+      >
+        {storyboardStyles.map((style) => (
+          <MenuItem key={style} value={style}>
+            {style}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 
