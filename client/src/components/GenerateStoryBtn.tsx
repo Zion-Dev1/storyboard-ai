@@ -54,6 +54,9 @@ const GenerateStoryBtn = () => {
         backgroundColor: "#e0e0e0",
         color: "#333",
         textTransform: "none",
+        borderRadius: 2,
+        px: 2,
+        py: 1,
         "&:hover": {
           backgroundColor: "#d5d5d5",
         },
