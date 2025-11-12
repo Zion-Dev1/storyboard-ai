@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 
 import generateImages from "../services/generateImagesApi";
-import retreiveImageModelKey from "../utils/retreiveImageModelKey";
+import retrieveImageModelKey from "../utils/retrieveImageModelKey";
 
 import useStoryStore from "../store/storyStore";
 import useImagesStore from "../store/imagesStore";
@@ -17,7 +17,7 @@ const StoryboardScreen = () => {
     if (!story || story.length === 0 || images.length >= story.length) return;
 
     const run = async () => {
-      const key = await retreiveImageModelKey();
+      const key = await retrieveImageModelKey();
       setIsGenerating(true);
 
       const results = [];
@@ -29,7 +29,7 @@ const StoryboardScreen = () => {
           style,
           key
         );
-        
+
         results.push(imageUrl);
       }
 
