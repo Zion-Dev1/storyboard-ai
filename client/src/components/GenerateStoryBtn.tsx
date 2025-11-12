@@ -44,7 +44,7 @@ const GenerateStoryBtn = () => {
           setIsGenerating(false);
         }
       }}
-      startIcon={isGenerating ? <CircularProgress /> : <AutoAwesome />}
+      startIcon={isGenerating ? <CircularProgress size="small"/> : <AutoAwesome />}
     >
       Generate
     </Button>
